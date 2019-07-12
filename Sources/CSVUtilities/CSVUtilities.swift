@@ -1,6 +1,14 @@
+import Foundation
+
 public protocol CSVRowRepresentable {
     static func headers() -> [String]
     func columnValues() -> [String]
+}
+
+extension CSVRowRepresentable {
+    var sanitizedColumns: [String] {
+        return columnValues().map { $0.replacingOccurrences(of: ",", with: "\",\"") }
+    }
 }
 
 extension Array where Element: CSVRowRepresentable {
