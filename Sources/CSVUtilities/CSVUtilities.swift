@@ -7,7 +7,7 @@ public protocol CSVRowRepresentable {
 
 extension CSVRowRepresentable {
     var sanitizedColumns: [String] {
-        return columnValues().map { $0.replacingOccurrences(of: ",", with: "\",\"") }
+        return columnValues().map { "\"\($0)\"" }
     }
 }
 
