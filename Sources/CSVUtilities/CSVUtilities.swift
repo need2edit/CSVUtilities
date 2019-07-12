@@ -1,11 +1,11 @@
 public protocol CSVRowRepresentable {
-    static func headers -> [String]
-    static func columnValues -> [String]
+    static func headers() -> [String]
+    func columnValues() -> [String]
 }
 
 extension Array where Element: CSVRowRepresentable {
     
-    public func header() -> [String] {
+    public func header() -> String {
         return Element.headers().joined(separator: ",")
     }
     
