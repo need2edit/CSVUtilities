@@ -18,7 +18,7 @@ extension Array where Element: CSVRowRepresentable {
     }
     
     public func rows() -> [String] {
-        return self.map { $0.columnValues().joined(separator: ",") }
+        return self.map { $0.sanitizedColumns.joined(separator: ",") }
     }
     
     public func csv() -> String {
